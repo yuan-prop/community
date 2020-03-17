@@ -23,6 +23,7 @@
 [Flyway](https://flywaydb.org/getstarted/firststeps/maven)
 [Lombok](https://projectlombok.org/)
 [myBatis generator](http://mybatis.org/generator/index.html)
+[MarkDown 富文本](http://editor.md.ipandao.com/)
 
 ## 脚本
 ```sql

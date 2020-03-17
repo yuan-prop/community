@@ -27,7 +27,7 @@ public class CustomizeErrorController implements ErrorController {
         HttpStatus status = this.getStatus(request);
 
         if(status.is4xxClientError()){
-            model.addAttribute("message", "您的請求出錯，要不然换个姿势");
+            model.addAttribute("message", "您的請求出錯4xx，要不然换个姿势");
         }
         if(status.is5xxServerError()){
             model.addAttribute("message", "服务器冒烟了5xx，请稍等下再试试");

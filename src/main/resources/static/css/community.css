@@ -1,35 +1,131 @@
-body{
+body {
     background-color: #efefef;
 }
-.main{
-    margin:30px;
+
+.main {
+    margin: 30px;
     background-color: white;
 }
-.btn-publish{
+
+.btn-publish {
     float: right;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
-.img-size{
-    height:38px;
-    width:38px;
+.media-object {
+    height: 38px;
+    width: 38px;
 }
 
-.text-desc{
-    font-size:12px;
-    font-weight:normal;
+.media-body {
+    padding-top: 10px;
+}
+
+.text-desc {
+    font-size: 12px;
+    font-weight: normal;
     color: #999;
 }
 
-.profile .section{
+.profile .section {
     margin-top: 15px;
 }
 
-.community-menu{
-    color:#999;
-    font-size:13px;
+.question-title {
+    margin-top: 25px;
 }
 
-.jumbotron{
-    margin:50px;
+.question-tag {
+    margin-right: 5px;
+}
+
+.question-related {
+    line-height: 20px;
+    font-size: 17px;
+    margin-left: 0;
+    list-style: none;
+    padding-left: 0;
+}
+
+.publish-tag{
+    display: none;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.publish-tag .label-info{
+    margin-right: 10px;
+    white-space: normal;
+    margin: 5px 5px;
+    display: inline-block;
+}
+
+.community-menu {
+    color: #999;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.jumbotron {
+    margin: 50px;
+}
+
+.comment-textarea {
+    margin: 10px 0;
+}
+
+.comments {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.sub-comments {
+    border-radius: 5px;
+    margin-top: 10px;
+    border: 1px solid #eee;
+    padding-top: 15px;
+    margin-bottom: 15px;
+}
+
+.sub-comments .btn {
+    margin: 10px 0;
+}
+
+.comment-btn {
+    float: right;
+    margin-bottom: 10px;
+}
+
+.split {
+    margin-top: 0;
+}
+
+.menu {
+    color: #999;
+    margin-top: 5px;
+}
+
+.menu .icon {
+    margin-right: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.menu .comment-icon {
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.menu .comment-icon:hover {
+    color: #499ef3;
+}
+
+.menu .active {
+    color: #499ef3;
+}
+
+.menu .icon:hover {
+    /*text-decoration: none;*/
+    color: #499ef3;
 }
