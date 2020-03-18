@@ -2,6 +2,7 @@ package majiang.comunity.service;
 
 import majiang.comunity.dto.PaginationDTO;
 import majiang.comunity.dto.QuestionDTO;
+import majiang.comunity.dto.QuestionQueryDTO;
 import majiang.comunity.exception.CustomizeErrorCode;
 import majiang.comunity.exception.CustomizeException;
 import majiang.comunity.mapper.QuestionExtraMapper;
@@ -35,13 +36,20 @@ public class QuestionService {
     @Autowired
     private QuestionExtraMapper questionExtraMapper;
 
-    public PaginationDTO list(Integer page, Integer size) {
+    public PaginationDTO list(String search, Integer page, Integer size) {
+
+        if (StringUtils.isNotBlank(search)) {
+            search = StringUtils.replaceChars(search, " ", "|");//将空格替换
+        }
 
         PaginationDTO paginationDTO = new PaginationDTO();
 
         Integer totalPage;
 
-        Integer totalCount = (int) questionMapper.countByExample(new QuestionExample());
+        QuestionQueryDTO questionQueryDTO = new QuestionQueryDTO();
+        questionQueryDTO.setSearch(search);
+        Integer totalCount = questionExtraMapper.countBySearch(questionQueryDTO);
+        //questionMapper.countByExample(new QuestionExample());
 
         if (totalCount % size == 0) {
             totalPage = totalCount / size;
@@ -57,7 +65,10 @@ public class QuestionService {
         Integer offset = size * (page - 1);
         QuestionExample questionExample = new QuestionExample();
         questionExample.setOrderByClause("gmt_create desc");
-        List<Question> questions = questionMapper.selectByExampleWithRowbounds(questionExample, new RowBounds(offset, size));
+        questionQueryDTO.setSize(size);
+        questionQueryDTO.setPage(offset);
+        List<Question> questions = questionExtraMapper.selectBySearch(questionQueryDTO);
+        //questionMapper.selectByExampleWithRowbounds(questionExample, new RowBounds(offset, size));
         List<QuestionDTO> questionDTOList = new ArrayList<>();
 
         for (Question question : questions) {
