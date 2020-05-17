@@ -91,10 +91,10 @@ public class CommentService {
     }
 
     private void createNotify(Comment comment, Long receiver, String notifierName, String outerTitle, NotificationTypeEnum notificationEnum, Long outerId) {
-        if(receiver == comment.getCommentator()){
-            //自己给自己评论时不用创建通知
-            return;
-        }
+//        if(receiver == comment.getCommentator()){
+//            //自己给自己评论时不用创建通知
+//            return;
+//        }
         Notification notification  = new Notification();
         notification.setGmtCreate(System.currentTimeMillis());
         notification.setType(notificationEnum.getType());

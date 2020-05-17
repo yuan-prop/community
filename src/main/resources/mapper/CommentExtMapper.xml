@@ -8,15 +8,15 @@
       This element was generated on Sun Mar 15 23:38:32 CST 2020.
     -->
     <id column="ID" jdbcType="BIGINT" property="id" />
-    <result column="PARENT_ID" jdbcType="BIGINT" property="parentId" />
-    <result column="TYPE" jdbcType="INTEGER" property="type" />
-    <result column="COMMENTATOR" jdbcType="BIGINT" property="commentator" />
-    <result column="GMT_CREATE" jdbcType="BIGINT" property="gmtCreate" />
-    <result column="GMT_MODIFIED" jdbcType="BIGINT" property="gmtModified" />
-    <result column="LIKE_COUNT" jdbcType="BIGINT" property="likeCount" />
-    <result column="CONTENT" jdbcType="VARCHAR" property="content" />
-    <result column="COMMENT_COUNT" jdbcType="INTEGER" property="commentCount" />
-  </resultMap>
+  <result column="PARENT_ID" jdbcType="BIGINT" property="parentId" />
+  <result column="TYPE" jdbcType="INTEGER" property="type" />
+  <result column="COMMENTATOR" jdbcType="BIGINT" property="commentator" />
+  <result column="GMT_CREATE" jdbcType="BIGINT" property="gmtCreate" />
+  <result column="GMT_MODIFIED" jdbcType="BIGINT" property="gmtModified" />
+  <result column="LIKE_COUNT" jdbcType="BIGINT" property="likeCount" />
+  <result column="CONTENT" jdbcType="VARCHAR" property="content" />
+  <result column="COMMENT_COUNT" jdbcType="INTEGER" property="commentCount" />
+</resultMap>
   <update id="incCommentCount" parameterType="majiang.comunity.model.Comment">
     update COMMENT
     set

@@ -25,29 +25,30 @@ public class PaginationDTO<T> {
         this.totalPage = totalPage;
         this.page = page;
         pages.add(page);
-        for(int i=1; i<=3; i++){
-            if(page-i > 0){
-                pages.add(0, page-i);
+        //相对当前页面标签，前后分别显示3个标签
+        for (int i = 1; i <= 3; i++) {
+            if (page - i > 0) {
+                pages.add(0, page - i);
             }
-            if(page + i <= totalPage){
+            if (page + i <= totalPage) {
                 pages.add(page + i);
             }
         }
 
         //是否显示上，下翻页
-        showPrevious = page == 1? false : true;
-        showNext = page == totalPage? false : true;
+        showPrevious = page == 1 ? false : true;
+        showNext = page == totalPage ? false : true;
 
         //是否展示第一页
-        if(pages.contains(1)){
+        if (pages.contains(1)) {
             showFirstPage = false;
-        }else{
+        } else {
             showFirstPage = true;
         }
         //是否展示最后一页
-        if(pages.contains(totalPage)){
+        if (pages.contains(totalPage)) {
             showEndPage = false;
-        }else{
+        } else {
             showEndPage = true;
         }
     }

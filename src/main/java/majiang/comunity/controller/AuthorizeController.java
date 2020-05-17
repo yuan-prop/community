@@ -1,8 +1,8 @@
 package majiang.comunity.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import majiang.comunity.dto.AccessTokenDTO;
 import majiang.comunity.dto.GithubUser;
-import majiang.comunity.mapper.UserMapper;
 import majiang.comunity.model.User;
 import majiang.comunity.provider.GithubProvider;
 import majiang.comunity.service.UserService;
@@ -21,6 +21,7 @@ import java.util.UUID;
  * Created by lenovo on 2020/3/5.
  */
 @Controller
+@Slf4j
 public class AuthorizeController {
 
     @Autowired
@@ -40,8 +41,8 @@ public class AuthorizeController {
     private UserService userService;
 
     @GetMapping("/callback")
-    public String callback(@RequestParam(name="code") String code,
-                           @RequestParam(name="state") String state,
+    public String callback(@RequestParam(name = "code") String code,
+                           @RequestParam(name = "state") String state,
                            HttpServletRequest request,
                            HttpServletResponse response) {
         AccessTokenDTO accessTokenDTO = new AccessTokenDTO();
@@ -52,7 +53,7 @@ public class AuthorizeController {
         accessTokenDTO.setState(state);
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
         GithubUser githubUser = githubProvider.getUser(accessToken);
-        if(githubUser != null && githubUser.getId() != null){
+        if (githubUser != null && githubUser.getId() != null) {
             User user = new User();
             String token = UUID.randomUUID().toString();
             user.setToken(token);
@@ -64,7 +65,8 @@ public class AuthorizeController {
 //            request.getSession().setAttribute("user", user);
             System.out.println(user.getName());
             return "redirect:/";
-        }else{
+        } else {
+            log.error("callback get github error,{}", githubUser);//打印日志
             //登录失败，重新登录
             return "redirect:/";
         }
@@ -72,7 +74,7 @@ public class AuthorizeController {
 
     @GetMapping("/logout")
     public String logout(HttpServletRequest request,
-                         HttpServletResponse response){
+                         HttpServletResponse response) {
         request.getSession().removeAttribute("user");
         Cookie cookie = new Cookie("token", null);
         cookie.setMaxAge(0);
